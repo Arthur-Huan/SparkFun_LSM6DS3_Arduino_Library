@@ -86,6 +86,9 @@ status_t LSM6DS3Core::beginCore(void)
 #ifdef ARDUINO_NANO33BLE
     mySpiSettings = SPISettings(spiPortSpeed, MSB_FIRST, SPI_MODE0);
 #endif
+#ifdef ARDUINO_AVR_UNO
+	mySpiSettings = SPISettings(spiPortSpeed, MSBFIRST, SPI_MODE1);
+#endif
 
 		pinMode(chipSelectPin, OUTPUT);
 		digitalWrite(chipSelectPin, HIGH);
